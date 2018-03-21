@@ -5,8 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### Setup
 
 ```
-git clone git@bitbucket.org:toancauxanh/yolo-aitl.git
-cd yolo-aitl
+cd worker-recognition
 python3 -m venv venv
 source venv/bin/activate
 (venv) pip install -r requirements.txt
