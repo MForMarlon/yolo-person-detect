@@ -5,12 +5,7 @@ from os import path, mkdir
 dirs = [
     'temp',
     'temp/dataset',
-    'temp/dataset/train',
-    'temp/dataset/train/images',
-    'temp/dataset/train/labels',
-    'temp/dataset/eval',
-    'temp/dataset/eval/images',
-    'temp/dataset/eval/labels',
+    'temp/checkpoints',
     'temp/weights',
     'temp/logs'
 ]

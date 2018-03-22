@@ -75,15 +75,19 @@ def load(d):
     return process(images, labels)
 
 
-# start
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    '-d',
-    '--dir',
-    help='Relative path to dataset directory'
-)
-args = parser.parse_args()
-if not args.dir:
-    print('Please specify path to extracted folder')
-else:
-    entries = load(path.normpath(args.dir))
+def start():
+	parser = argparse.ArgumentParser()
+	parser.add_argument(
+		'-d',
+		'--dir',
+		help='Relative path to dataset directory'
+	)
+	args = parser.parse_args()
+	if not args.dir:
+		print('Please specify path to extracted folder')
+	else:
+		entries = load(path.normpath(args.dir))
+
+
+if __name__ == '__main__':
+    start()

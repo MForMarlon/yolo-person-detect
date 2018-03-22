@@ -15,10 +15,10 @@ from utils.drawer import draw_boxes
 
 min_threshold = 0.5
 
-model_file = 'temp/pretrained.h5'
+model_file = 'temp/checkpoints/latest.h5'
 image_dir = 'tests/images'
 
-video_exts = ['.avi', '.mp4']
+video_exts = ['.avi', '.mp4', '.mkv']
 
 model = yolo()
 model.load_weights(model_file)
@@ -63,30 +63,32 @@ def predict_video(video_path):
 
 
 def check(f=None):
-    if f:
-        if not path.exists(f):
-            print('File not found: "{}"'.format(f))
-        else:
-            ext = path.splitext(f)[1]
-            if ext in video_exts:
-                predict_video(f)
-            else:
-                predict_image(f)
-    else:
+    if not f:
         images = glob.glob(image_dir + '/*.jpg')
         f = choice(images)
-        predict_image(f)
+
+    if not path.exists(f):
+        return print('File not found: "{}"'.format(f))
+
+    ext = path.splitext(f)[1]
+    if ext in video_exts:
+        return predict_video(f)
+    return predict_image(f)
 
 
-# start
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    '-f',
-    '--file',
-    help='Image file to predict'
-)
-args = parser.parse_args()
-if not args.file:
-    check()
-else:
-    check(path.normpath(args.file))
+def start():
+	parser = argparse.ArgumentParser()
+	parser.add_argument(
+		'-f',
+		'--file',
+		help='Image file to predict'
+	)
+	args = parser.parse_args()
+	if not args.file:
+		check()
+	else:
+		check(path.normpath(args.file))
+
+
+if __name__ == '__main__':
+    start()

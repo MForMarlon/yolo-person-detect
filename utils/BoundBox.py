@@ -62,6 +62,3 @@ class BoundBox:
             self.score = self.classes[self.get_label()]
 
         return self.score
-
-    def __repr__(self):
-        return "\n(classes: %s, boxXYWH: %s, score: %s, label: %s)"%(self.classes, [self.x, self.y, self.w, self.h], self.get_score(), self.get_label())
