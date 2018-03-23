@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### Setup
 
 ```
-git clone git@bitbucket.org:toancauxanh/yolo-aitl.git
+git clone git@bitbucket.org:aigg/wr-main.git
 cd yolo-aitl
 python3 -m venv --system-site-packages venv
 source venv/bin/activate
