@@ -61,15 +61,34 @@ Lastly, if everything is ok, you can start training now:
 ### Prediction
 
 
+Using `predict.py`, you can:
+
+
+1, Detect person from specified image
+
 ```
 ./predict.py -f tests/images/01.jpg
 
-# or randomly predict
+```
 
+
+2, Detect all .jpg image from specified folder
+
+```
+./predict.py -d path_to_input_folder -o path_to_output_folder
+```
+
+
+3, Randomly detect an image stored in `test/images`
+
+```
 ./predict.py
+```
 
-# AVI and MP4 video file also work
 
+4, Detect person from AVI or MP4 video file
+
+```
 ./predict.py -f path_to_your_video.avi
 ```
 

@@ -6,8 +6,11 @@ import argparse
 import numpy as np
 import cv2
 
-from os import path
+from os import path, mkdir
+from shutil import rmtree
 from random import choice
+
+from tqdm import tqdm
 
 from utils.network import yolo
 from utils.detector import detect
@@ -44,6 +47,17 @@ def predict_image(image_path):
     cv2.destroyAllWindows()
 
 
+def predict_multi(images, output):
+    print('Founded {} images. Start handling...'.format(len(images)))
+    for img_path in tqdm(images):
+        image = cv2.imread(img_path)
+        image = _predict(image)
+        fname = path.basename(img_path)
+        f = output + '/' + fname
+        print('Finish handling "{}"'.format(fname))
+        cv2.imwrite(f, image)
+
+
 def predict_video(video_path):
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -62,18 +76,25 @@ def predict_video(video_path):
     cv2.destroyAllWindows()
 
 
-def check(f=None):
+def check(f=None, o=None):
     if not f:
         images = glob.glob(image_dir + '/*.jpg')
         f = choice(images)
 
     if not path.exists(f):
-        return print('File not found: "{}"'.format(f))
+        return print('File/folder not found: "{}"'.format(f))
 
-    ext = path.splitext(f)[1]
-    if ext in video_exts:
-        return predict_video(f)
-    return predict_image(f)
+    if path.isfile(f):
+        ext = path.splitext(f)[1]
+        if ext in video_exts:
+            return predict_video(f)
+        return predict_image(f)
+    if path.isdir(f):
+        if path.exists(o):
+            rmtree(o)
+        mkdir(o)
+        images = glob.glob(f + '/*.jpg')
+        return predict_multi(images, o)
 
 
 def start():
@@ -83,11 +104,25 @@ def start():
         '--file',
         help='Image file to predict'
     )
+    parser.add_argument(
+        '-d',
+        '--dir',
+        help='Image dir to predict'
+    )
+    parser.add_argument(
+        '-o',
+        '--output',
+        help='Image dir to export the output'
+    )
+
     args = parser.parse_args()
-    if not args.file:
-        check()
-    else:
+
+    if args.dir:
+        check(path.normpath(args.dir), path.normpath(args.output))
+    elif args.file:
         check(path.normpath(args.file))
+    else:
+        check()
 
 
 if __name__ == '__main__':
