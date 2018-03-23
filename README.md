@@ -33,7 +33,6 @@ Then:
 - extract compressed `.tar.gz` file into `temp/` folder
 - run `seed` to generate training set & evaluation set
 
-
 For example:
 
 ```
@@ -56,6 +55,10 @@ Lastly, if everything is ok, you can start training now:
 ```
 ./train.py
 ```
+
+If the server 49.156.52.21 does not work, here is the alternative:
+
+https://mega.nz/#F!fXBVgYrZ!sP1cSnhJVKME15XGWImTxw
 
 
 ### Prediction
