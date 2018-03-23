@@ -81,6 +81,9 @@ def check(f=None, o=None):
         images = glob.glob(image_dir + '/*.jpg')
         f = choice(images)
 
+    if f == 'cam':
+        return predict_video(0)
+
     if not path.exists(f):
         return print('File/folder not found: "{}"'.format(f))
 

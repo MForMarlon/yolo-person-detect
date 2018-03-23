@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### Setup
 
 ```
-git clone git@bitbucket.org:aigg/wr-main.git
+git clone git@bitbucket.org:toancauxanh/yolo-aitl.git
 cd yolo-aitl
 python3 -m venv --system-site-packages venv
 source venv/bin/activate
@@ -93,6 +93,12 @@ Using `predict.py`, you can:
 
 ```
 ./predict.py -f path_to_your_video.avi
+```
+
+5, Detect persom from camera
+
+```
+./predict -f cam
 ```
 
 
