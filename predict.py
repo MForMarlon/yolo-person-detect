@@ -77,12 +77,12 @@ def predict_video(video_path):
 
 
 def check(f=None, o=None):
+    if isinstance(f, int):
+        return predict_video(f)
+
     if not f:
         images = glob.glob(image_dir + '/*.jpg')
         f = choice(images)
-
-    if f == 'cam':
-        return predict_video(0)
 
     if not path.exists(f):
         return print('File/folder not found: "{}"'.format(f))
@@ -108,6 +108,11 @@ def start():
         help='Image file to predict'
     )
     parser.add_argument(
+        '-c',
+        '--cam',
+        help='Camera source to predict'
+    )
+    parser.add_argument(
         '-d',
         '--dir',
         help='Image dir to predict'
@@ -120,7 +125,9 @@ def start():
 
     args = parser.parse_args()
 
-    if args.dir:
+    if args.cam:
+        check(int(args.cam))
+    elif args.dir:
         check(path.normpath(args.dir), path.normpath(args.output))
     elif args.file:
         check(path.normpath(args.file))

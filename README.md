@@ -98,8 +98,10 @@ Using `predict.py`, you can:
 5, Detect persom from camera
 
 ```
-./predict -f cam
+./predict -c N
 ```
+
+With N is camera index.
 
 
 ### TensorBoard
