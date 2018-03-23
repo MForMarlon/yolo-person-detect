@@ -77,17 +77,17 @@ def check(f=None):
 
 
 def start():
-	parser = argparse.ArgumentParser()
-	parser.add_argument(
-		'-f',
-		'--file',
-		help='Image file to predict'
-	)
-	args = parser.parse_args()
-	if not args.file:
-		check()
-	else:
-		check(path.normpath(args.file))
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-f',
+        '--file',
+        help='Image file to predict'
+    )
+    args = parser.parse_args()
+    if not args.file:
+        check()
+    else:
+        check(path.normpath(args.file))
 
 
 if __name__ == '__main__':
