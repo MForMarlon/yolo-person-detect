@@ -27,9 +27,9 @@ pip install tensorflow-gpu
 
 Then:
 
-- download [yolo.weights](http://49.156.52.21:7777/YOLO/yolo.weights) into `temp/weights/`
-- download [initial-model.h5](http://49.156.52.21:7777/checkpoints/initial-model.h5) into `temp/checkpoints/`
-- download [person-small.tar.gz](http://49.156.52.21:7777/dataset/person/person-small.tar.gz) (10MB) or [person-full.tar.gz](http://49.156.52.21:7777/dataset/person/person-full.tar.gz) (310MB)
+- download [yolo.weights](https://mega.nz/#!HTAXUKzS!Rjp2fda8wDtZ3svORzp0NN5iHJFJJ_9Nin-1H22KH54) into `temp/weights/`
+- download [initial-model.h5](https://mega.nz/#!GfZXwRZK!usMEKy7jzSTu8xIQzQudomewd3CY477XvjFt5Zws_ss) into `temp/checkpoints/`
+- download [person-small.tar.gz](https://mega.nz/#!GOhlEa7A!OJAOHo5icQAxB_dirrSs3CtOtDp9-KCjWkAQfJbht8M) (10MB) or [person-full.tar.gz](https://mega.nz/#!HX5ABaia!1ROcMJwRo3NUM8e9Vz6dUUTEdOfzHLDTY2-b3AZAxwQ) (310MB)
 - extract compressed `.tar.gz` file into `temp/` folder
 - run `seed` to generate training set & evaluation set
 
@@ -37,11 +37,6 @@ For example:
 
 ```
 cd yolo-aitl
-
-wget http://49.156.52.21:7777/YOLO/yolo.weights -P temp/weights/
-wget http://49.156.52.21:7777/checkpoints/initial-model.h5 -P temp/checkpoints/
-wget http://49.156.52.21:7777/dataset/person/person-small.tar.gz -P temp/
-
 tar -xzvf temp/person-small.tar.gz -C temp
 ./seed.py -d temp/person-small/
 ```
@@ -55,10 +50,6 @@ Lastly, if everything is ok, you can start training now:
 ```
 ./train.py
 ```
-
-If the server 49.156.52.21 does not work, here is the alternative:
-
-https://mega.nz/#F!fXBVgYrZ!sP1cSnhJVKME15XGWImTxw
 
 
 ### Prediction
