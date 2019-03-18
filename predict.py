@@ -21,7 +21,7 @@ min_threshold = 0.5
 model_file = 'temp/checkpoints/latest.h5'
 image_dir = 'tests/images'
 
-video_exts = ['.avi', '.mp4', '.mkv']
+video_exts = ['.avi', '.mp4', '.mkv', '.h264']
 
 model = yolo()
 model.load_weights(model_file)
@@ -41,7 +41,7 @@ def predict_image(image_path):
 
     while True:
         k = cv2.waitKey(30)
-        if k == 27:
+        if k == 27: # Escape key
             break
         cv2.imshow('Image prediction', image)
     cv2.destroyAllWindows()
@@ -68,7 +68,7 @@ def predict_video(video_path):
         if ret is False:
             break
         k = cv2.waitKey(30)
-        if k == 27:
+        if k == 27: # Escape key
             break
         frame = _predict(frame)
         cv2.imshow('Video prediction', frame)
