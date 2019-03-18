@@ -51,6 +51,9 @@ class BoundBox:
         self.label = -1
         self.score = -1
 
+    def get_coords(self):
+        return self.x, self.y, self.w, self.h
+
     def get_label(self):
         if self.label == -1:
             self.label = np.argmax(self.classes)
